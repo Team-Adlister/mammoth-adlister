@@ -5,6 +5,11 @@
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
 </head>
+<style>
+    .ptDropDown{
+     width: 450px;
+    }
+</style>
 <body>
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
@@ -18,9 +23,9 @@
                 <label for="email">Email</label>
                 <input id="email" name="email" class="form-control" type="text">
             </div>
-            <select name="roleId">
-                <option id="parent" value="1">Parent</option>
-                <option id="teacher" value="2">Teacher</option>
+            <select class="form-control" name="roleId">
+                <option  id="parent" value="1">Parent</option>
+                <option  id="teacher" value="2">Teacher</option>
                 <br>
             </select>
             <div class="form-group">
