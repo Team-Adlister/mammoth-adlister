@@ -52,6 +52,22 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    @Override
+    public String findByRoleId(long id) {
+        String query = "SELECT name FROM roles WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return rs.getString("name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
@@ -61,7 +77,7 @@ public class MySQLUsersDao implements Users {
             rs.getString("username"),
             rs.getString("email"),
             rs.getString("password"),
-            rs.getLong ("roleId")
+            rs.getLong ("role_Id")
         );
     }
 
