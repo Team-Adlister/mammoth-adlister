@@ -18,9 +18,9 @@
                 <label for="email">Email</label>
                 <input id="email" name="email" class="form-control" type="text">
             </div>
-            <select>
-                <option id="parent">Parent</option>
-                <option id="teacher">Teacher</option>
+            <select name="roleId">
+                <option id="parent" value="1">Parent</option>
+                <option id="teacher" value="2">Teacher</option>
                 <br>
             </select>
             <div class="form-group">
