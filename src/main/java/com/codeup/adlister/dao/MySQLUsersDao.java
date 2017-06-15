@@ -36,12 +36,13 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public Long insert(User user) {
-        String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+        String query = "INSERT INTO users(username, email, password, role_id) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getPassword());
+            stmt.setLong(4, user.getRoleId());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -49,6 +50,22 @@ public class MySQLUsersDao implements Users {
         } catch (SQLException e) {
             throw new RuntimeException("Error creating new user", e);
         }
+    }
+
+    @Override
+    public String findByRoleId(long id) {
+        String query = "SELECT name FROM roles WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return rs.getString("name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
@@ -59,7 +76,8 @@ public class MySQLUsersDao implements Users {
             rs.getLong("id"),
             rs.getString("username"),
             rs.getString("email"),
-            rs.getString("password")
+            rs.getString("password"),
+            rs.getLong ("role_Id")
         );
     }
 
