@@ -18,7 +18,7 @@
                 <label for="email">Email</label>
                 <input id="email" name="email" class="form-control" type="text">
             </div>
-            <select name="roleId">
+            <select class="form-control" name="roleId">
                 <option id="parent" value="1">Parent</option>
                 <option id="teacher" value="2">Teacher</option>
                 <br>
@@ -31,7 +31,7 @@
                 <label for="confirm_password">Confirm Password</label>
                 <input id="confirm_password" name="confirm_password" class="form-control" type="password">
             </div>
-            <input type="submit" class="btn btn-primary btn-block">
+            <input type="submit" class="btn btn-danger btn-block">
         </form>
     </div>
 </body>

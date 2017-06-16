@@ -14,18 +14,14 @@
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-
             <c:if test="${sessionScope.user == null}">
             <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
             </c:if>
-
-
             <c:if test="${sessionScope.user != null}">
                 <li><a href="/ads/create">Create Ad</a></li>
                 <li><a href="/logout">Logout</a></li>
             </c:if>
-
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
