@@ -10,9 +10,15 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username} you're log in as a ${sessionScope.role}!</h1>
+        <c:if test="${sessionScope.user == null}">
+            <h1>Welcome</h1>
+        </c:if>
 
-        <h2>Here Are all the ads!</h2>
+        <c:if test="${sessionScope.user != null}">
+            <h1>Welcome, ${sessionScope.user.username} you're log in as a ${sessionScope.role}!</h1>
+        </c:if>
+
+        <h2>Here are all the ads!</h2>
 
         <c:forEach var="ad" items="${ads}">
             <div class="col-md-6 ">
