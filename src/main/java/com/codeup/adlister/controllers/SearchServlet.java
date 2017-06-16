@@ -9,14 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
-public class ViewProfileServlet extends HttpServlet {
+/**
+ * Created by renecortez on 6/16/17.
+ */
+
+@WebServlet(name = "SearchServlet", urlPatterns="/search")
+public class SearchServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null) {
-            response.sendRedirect("/login");
-            return;
-        }
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        String search = request.getParameter("search");
+        request.setAttribute("ads", DaoFactory.getAdsDao().getAdsByTerm(search));
+        request.setAttribute("AdsDao", DaoFactory.getAdsDao());
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+
     }
 }
