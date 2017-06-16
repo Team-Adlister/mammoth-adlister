@@ -15,8 +15,8 @@
         <h2>Here Are all the ads!</h2>
 
         <c:forEach var="ad" items="${ads}">
-            <div class="col-md-6">
-                <h2>${ad.title}</h2>
+            <div class="col-md-6 ">
+                <a class="text-danger" href="/adsDetail?Id=${ad.id}"><h2>${ad.title} </h2></a>
                 <p>${ad.description}</p>
             </div>
         </c:forEach>
