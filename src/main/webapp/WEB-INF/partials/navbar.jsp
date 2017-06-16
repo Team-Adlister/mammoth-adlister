@@ -5,11 +5,11 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="/index.jsp">HL</a><%--TODO: change link--%>
+            <a class="navbar-brand" href="/index.jsp">HL</a>
         </div>
-        <form class="navbar-form navbar-left">
+        <form class="navbar-form navbar-left" action="/search" method="get">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input name="search" id="search" type="text" class="searchBar form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
